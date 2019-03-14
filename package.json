@@ -1,0 +1,23 @@
+{
+  "name": "projet",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Elienvalleau/projectOpenData.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Elienvalleau/projectOpenData/issues"
+  },
+  "homepage": "https://github.com/Elienvalleau/projectOpenData#readme",
+  "dependencies": {
+    "ckan": "^0.2.3",
+    "express": "^4.16.4"
+  }
+}
