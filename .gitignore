@@ -1,6 +1,4 @@
 node_modules/
-<<<<<<< HEAD
-=======
 
 # Created by https://www.gitignore.io/api/node,webstorm+all
 # Edit at https://www.gitignore.io/?templates=node,webstorm+all
@@ -172,4 +170,3 @@ modules.xml
  .idea/sonarlint
 
 # End of https://www.gitignore.io/api/node,webstorm+all
->>>>>>> e1662eba9f856f380cc9c20aa679eaa61752ecbb

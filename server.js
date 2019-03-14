@@ -32,6 +32,7 @@ app.use(morgan('dev'));
 
 // Routes
 app.use('/', require('./routes/home'));
+app.use('/', require('./routes/data'));
 
 // -------------------------------------------------- Start Server
 const PORT = 8000;
