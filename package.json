@@ -11,6 +11,7 @@
   "dependencies": {
     "bcrypt": "^3.0.4",
     "body-parser": "^1.18.3",
+    "ckan": "^0.2.3",
     "express": "^4.16.4",
     "express-hbs": "^2.0.2",
     "morgan": "^1.9.1"

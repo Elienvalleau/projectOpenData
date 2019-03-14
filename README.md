@@ -3,7 +3,7 @@
 npm i
 
 ## Lancer le serveur Node
-
+npm install -g nodemon   
 nodemon server.js
 
 ## Structure
