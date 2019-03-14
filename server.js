@@ -1,14 +1,23 @@
 // Dependencies
+
 const express = require('express');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const path = require('path');
-const hbs = require('express-hbs');
+var hbs = require('express-hbs');
 
 // Express initialisation
 const app = express();
 
 app.use(express.static('public'));
+
+hbs.registerHelper('ifCond', function(v1, v2, options) {
+	if(v1 === v2) {
+		return options.fn(this);
+	}
+	return options.inverse(this);
+});
+
 
 app.engine('hbs', hbs.express4({
     partialsDir: __dirname + '/views'

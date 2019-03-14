@@ -1,17 +1,16 @@
 // Dependencies
 const express = require('express');
-var CKAN = require('ckan');
 const router = express.Router();
-
-var clientCkan = new CKAN.Client('http://35.197.231.222/dataset/projettgv');
-clientCkan.requestType = 'GET';
-
-console.log(clientCkan);
 
 // -------------------------------------------------- Home
 router.get('/', (req, res) => {
-    res.render('home', { name: "test" });
+    res.render('home');
 });
 
+router.post('/', (req, res) => {
+    var gare1 = req.body.gare1Name;
+    var gare2 = req.body.gare2Name;
+    res.redirect('/data?gare1='+gare1+'&gare2='+gare2)
+});
 
 module.exports = router;

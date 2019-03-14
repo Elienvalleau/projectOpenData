@@ -8,13 +8,37 @@
     <link rel="stylesheet" href="css/app.css">
     <title>Data</title>
 </head>
-
+<p>Gare de départ : {{gare1}}</p>
+<p>Gare d'arrivée : {{gare2}}</p>
 <body>
+{{#each data as |layer1|}}
+    {{#each layer1 as |layer2|}}
+        {{#each layer2 as |layer3|}}
+            {{#ifCond  gare1 this.gare_de_depart_en_majuscules_sans_espaces_si_tiret}}
+                {{#ifCond gare2 this.gare_d_arrivee_en_majuscules_sans_espaces_si_tiret}}
+                    {{this}}
+                {{else}}
+                    <h1>Gare d'arrivée incorrect</h1>
+                {{/ifCond}}
+                {{this}}
+            {{else}}
+                <h1>Gare de départ incorrect</h1>
+            {{/ifCond }}
+        {{/each}}
+    {{/each}}
+    <br><hr><br>
+{{/each}}
+<script src="../public/js/app.js"></script>
+<script>
+    import * as Handlebars from "express-hbs";
 
-    
-
-
-    <script src="js/app.js"></script>
+    Handlebars.registerHelper('ifCond', function(v1, v2, options) {
+        if(v1 === v2) {
+            return options.fn(this);
+        }
+        return options.inverse(this);
+    });
+</script>
 </body>
 
 </html>
