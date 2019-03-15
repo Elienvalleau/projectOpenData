@@ -18,16 +18,18 @@
     </div>
     <div class="frame">
         <div class="centre">
-
-            {{#ifSup pourcD 10}}
-                <h2 style="color: red">VOTRE TRAIN PARTIRA AVEC DU RETARD.</h2>
+            {{#ifCond trajet "erreur"}}
+                <h2 style="color: red">LE TRAJET SAISI EST INCORRECT</h2>
             {{else}}
-                <h2 style="color: green">Tout va bien, pas de retard en prévision au départ.</h2>
-            {{/ifSup}}
-            <br>
-            <p style="font-size: 0.8em">Probabilité de retard au départ : {{pourcD}}% ({{retardDepart}} / {{nombreMax}} trajets) </p>
-            <p style="font-size: 0.8em">Probabilité de retard à l'arrivée : {{pourcA}}% ({{retardArr}} / {{nombreMax}} trajets) </p>
-
+                {{#ifSup pourcD 10}}
+                    <h2 style="color: red">VOTRE TRAIN PARTIRA AVEC DU RETARD.</h2>
+                {{else}}
+                    <h2 style="color: green">Tout va bien, pas de retard en prévision au départ.</h2>
+                {{/ifSup}}
+                <br>
+                <p style="font-size: 0.8em">Probabilité de retard au départ : {{pourcD}}% ({{retardDepart}} / {{nombreMax}} trajets) </p>
+                <p style="font-size: 0.8em">Probabilité de retard à l'arrivée : {{pourcA}}% ({{retardArr}} / {{nombreMax}} trajets) </p>
+            {{/ifCond}}
 
         </div>
 

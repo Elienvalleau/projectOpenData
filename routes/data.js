@@ -18,6 +18,7 @@ router.get('/data', (req, res) => {
         var retardDepart = 0;
         var nombreMax =  0;
         var retardArr =  0;
+        var trajet = "ok";
 
         for (i = 0; i < data.length; i++){
             if(gare1 === (data[i]['fields']['gare_de_depart_en_majuscules_sans_espaces_si_tiret'])){
@@ -32,7 +33,10 @@ router.get('/data', (req, res) => {
 
         var pourcD = Math.round((retardDepart/nombreMax)*100);
         var pourcA = Math.round((retardArr/nombreMax)*100);
-        res.render('data', { data: listA, gare1: gare1, gare2: gare2, retardDepart:retardDepart, retardArr:retardArr, nombreMax:nombreMax, pourcA:pourcA, pourcD:pourcD });
+        if (listA.length === 0){
+            trajet = "erreur"
+        }
+        res.render('data', { data: listA, trajet: trajet, gare1: gare1, gare2: gare2, retardDepart:retardDepart, retardArr:retardArr, nombreMax:nombreMax, pourcA:pourcA, pourcD:pourcD });
     })
 });
 
