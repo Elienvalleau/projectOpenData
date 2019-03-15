@@ -13,8 +13,29 @@ router.get('/data', (req, res) => {
     then(result => {
         var gare1 = req.query.gare1;
         var gare2 = req.query.gare2;
-        res.render('data', { data: result.data, gare1: gare1, gare2: gare2 });
+        var data = result.data;
+        var listA = [];
+        var retardDepart = 0;
+        var nombreMax =  0;
+        var retardArr =  0;
+
+        for (i = 0; i < data.length; i++){
+            if(gare1 === (data[i]['fields']['gare_de_depart_en_majuscules_sans_espaces_si_tiret'])){
+                if(gare2 === (data[i]['fields']['gare_d_arrivee_en_majuscules_sans_espaces_si_tiret'])){
+                    listA.push(data[i]);
+                    retardDepart += data[i]['fields']['nombre_de_trains_en_retard_au_depart'];
+                    retardArr += data[i]['fields']['nombre_de_trains_en_retard_a_l_arrivee'];
+                    nombreMax += data[i]['fields']['nombre_de_circulations_prevues'];
+                }
+            }
+        }
+
+        var pourcD = Math.round((retardDepart/nombreMax)*100);
+        var pourcA = Math.round((retardArr/nombreMax)*100);
+        res.render('data', { data: listA, gare1: gare1, gare2: gare2, retardDepart:retardDepart, retardArr:retardArr, nombreMax:nombreMax, pourcA:pourcA, pourcD:pourcD });
     })
 });
 
 module.exports = router;
+
+// nombre_de_trains_en_retard_au_depart / nombre_de_circulations_prevues
